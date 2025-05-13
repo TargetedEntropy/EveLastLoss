@@ -1,10 +1,18 @@
+# Eve Last Loss
+
+Get the last time you lost a ship in Eve Online, and what it was.
+
+```
+Time since last ship loss: 41 seconds
+Lost ship: Velator
+```
+
+
 ### Get Last Loss
 
 Run it from the command line with your access token and character ID:
 
 python eve_last_loss.py YOUR_ACCESS_TOKEN YOUR_CHARACTER_ID
-
---
 
 ### Get Token
 
