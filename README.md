@@ -12,7 +12,8 @@ Before using this script:
 
 * Register an application at https://developers.eveonline.com/
 * Set the callback URL to http://localhost:8080/callback
-* Replace YOUR_CLIENT_ID and YOUR_CLIENT_SECRET in the script, `get_token.py` with your actual values
+* copy `env.sample` to `.env`
+* Replace your_client_id_here and your_client_secret_here in `.env` with your actual values
 
 The script will:
 
