@@ -7,12 +7,23 @@ import json
 import base64
 import secrets
 import hashlib
+import os
+from dotenv import load_dotenv
 
-# Your application details (register at https://developers.eveonline.com/)
-CLIENT_ID = ""  # Replace with your Client ID
-CLIENT_SECRET = ""  # Replace with your Secret Key
+# Load environment variables from .env file
+load_dotenv()
+
+# Get credentials from environment variables
+CLIENT_ID = os.getenv("EVE_CLIENT_ID")
+CLIENT_SECRET = os.getenv("EVE_CLIENT_SECRET")
 CALLBACK_URL = "http://localhost:8080/callback"  # Must match your registered callback
 SCOPES = "esi-killmails.read_killmails.v1"  # Scope needed for killmail access
+
+# Check if credentials are loaded
+if not CLIENT_ID or not CLIENT_SECRET:
+    print("Error: Missing credentials in .env file")
+    print("Please create a .env file with EVE_CLIENT_ID and EVE_CLIENT_SECRET")
+    exit(1)
 
 # Generate PKCE challenge (for enhanced security)
 code_verifier = secrets.token_urlsafe(64)
@@ -78,7 +89,6 @@ def get_access_token():
         "grant_type": "authorization_code",
         "code": authorization_code,
         "client_id": CLIENT_ID,
-        # Only include client_secret if your app is confidential
         "client_secret": CLIENT_SECRET,  
         "code_verifier": code_verifier,
         "redirect_uri": CALLBACK_URL
