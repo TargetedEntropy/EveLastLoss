@@ -76,7 +76,7 @@ def get_access_token():
         f"&state=unique-state-string"
     )
 
-    print(f"Opening browser for EVE Online authorization...")
+    print("Opening browser for EVE Online authorization...")
     webbrowser.open(auth_url)
 
     # 3. Wait for the callback
